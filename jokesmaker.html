@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>happy joky boy</title>
+    <style>
+        #joke {
+            margin: 70px;
+            padding: 10px 30px;
+            background-color: rgb(246, 253, 182);
+            border: rgb(238, 241, 56) 5px solid;
+            width: 550px;
+            height: 250px;
+            border-radius: 10px;
+            text-align: center;
+
+        }
+
+        #joke-head {
+            text-align: center;
+            color: rgb(248, 0, 0);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+
+        }
+
+        #btn {
+            color: rgb(236, 227, 99);
+            background-color: rgb(228, 22, 22);
+            margin: 40px;
+            text-align: center;
+            /* border: red 2px solid ; */
+            border-radius: 3px;
+            padding: 5px 7px;
+
+        }
+
+        #joke-body {
+            color: rgb(67, 245, 111);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            /* width: 275px; */
+            height: 20px;
+            padding: 10px;
+        }
+
+        #NAME {
+            padding: 20px;
+            color: rgb(199, 10, 120);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="joke">
+        <h1 id="joke-head">😂Daily update jokes😂</h1>
+        <p id="joke-body"> your happy jokes is loading...</p>
+        <a href="https://www.instagram.com/nikhilkapasia_/" id="NAME"> by Nikhil kapasia</a><br>
+        <button id="btn">more more❤️</button>
+    </div>
+    <script>
+        const jokes = document.getElementById("joke-body");
+        const btn = document.getElementById("btn");
+
+        // Promise
+        // const generatejokes =() => {
+        // const setHeader ={
+        //     headers: {
+        //         Accept : "application/json"
+        //     }
+        // }
+
+        //     fetch("https://icanhazdadjoke.com",setHeader).then((res)=> res.json())
+        //     .then((data)=>{jokes.innerHTML =data.joke;}).catch((error)=>
+        //     {console.log(error);})
+
+
+        // }
+
+        //  async wait  
+        const generatejokes = async () => {
+            try {
+                const setHeader = {
+                    headers: {
+                        Accept: "application/json"
+                    }
+
+                }
+
+                const res = await fetch("https://icanhazdadjoke.com", setHeader);
+                const data = await res.json();
+                jokes.innerHTML = data.joke;
+            } catch (err) {
+                console.log(`the error is ${err}`);
+            }
+
+        }
+
+
+        btn.addEventListener("click", generatejokes);
+        generatejokes();
+
+
+    </script>
+</body>
+
+</html>
